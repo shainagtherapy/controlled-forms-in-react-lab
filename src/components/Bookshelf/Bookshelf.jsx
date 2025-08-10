@@ -10,13 +10,35 @@ const Bookshelf = () => {
         { title: '',  author: '' }
     );
 
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setNewBook((prev) => (
+        { ...prev, [name]: value, }
+        ))
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setBooks(prev => [...prev, newBook]);
+        setNewBook({ title: '', author: '' });
+    };
 
     return (
     <div className="bookshelfDiv">
-    <div className="formDiv">
-        <h3>Add a Book</h3>
-        {/* Form will go here */}
-    </div>
+
+        <div className="formDiv">
+            <h3>Add a Book</h3>
+
+            <form onSubmit={ handleSubmit }>
+                <label>Title<input type="text" name="title" value ={newBook.title} onChange={handleInputChange} />
+                </label>
+
+                <label>Author<input type="text" name="author" value={newBook.author} onChange= {handleInputChange} />
+                </label>
+
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
     <div className="bookCardsDiv">
         {/* Book cards will display here */}
     </div>
