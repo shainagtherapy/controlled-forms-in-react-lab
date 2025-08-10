@@ -39,11 +39,19 @@ const Bookshelf = () => {
                 <button type="submit">Add Book</button>
             </form>
         </div>
-    <div className="bookCardsDiv">
-        {/* Book cards will display here */}
+    
+        
+        <div className="bookCardsDiv">
+            {books.map((library, index) => (
+                <div className="bookCard" key={index}>
+                <h4>Title: {library.title}</h4>
+                <p>Author: {library.author}</p>
+                </div>
+            ))}
+        </div>
     </div>
-    </div>
-    );
+    )
+    
 };
 
 export default Bookshelf;
